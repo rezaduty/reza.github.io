@@ -41,6 +41,16 @@ jobs:
           bundle config set --local without 'development test'
           bundle install --jobs 4 --retry 3
 
+      # jekyll-imagemagick shells out to `convert`, which is no longer present
+      # on the Ubuntu runner image. Without it the plugin silently generates no
+      # .webp variants and every responsive <picture> source 404s.
+      - name: Install ImageMagick 🖼️
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y imagemagick webp
+          convert -version
+          convert -list format | grep -i webp
+
       - name: Update _config.yml ⚙️
         uses: fjogeleit/yaml-update-action@v0.13.1
         with:
