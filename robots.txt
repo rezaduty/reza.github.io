@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://rezaduty.github.io/reza.github.io/sitemap.xml
+Sitemap: https://rezaduty.github.io/info/sitemap.xml
